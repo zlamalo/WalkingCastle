@@ -1,0 +1,279 @@
+[gd_scene load_steps=24 format=3 uid="uid://c2h5amesqewgq"]
+
+[ext_resource type="Texture2D" uid="uid://nef0k6upbtlk" path="res://Assets/Characters/Blacksmith.png" id="1_65h7g"]
+[ext_resource type="Script" uid="uid://7v6uouvv5jn1" path="res://Characters/Player/Blacksmith.cs" id="1_wln4q"]
+[ext_resource type="Texture2D" uid="uid://bkw0i7o6bp8x2" path="res://Assets/Characters/BlacksmithWalk0.png" id="3_ukn60"]
+[ext_resource type="Texture2D" uid="uid://ck58fdq3mm313" path="res://Assets/Characters/BlacksmithWalk1.png" id="4_uc2a1"]
+[ext_resource type="Texture2D" uid="uid://bjp032vwjya2n" path="res://Assets/Characters/BlacksmithWalk2.png" id="5_3aypt"]
+[ext_resource type="Texture2D" uid="uid://cxtg7wwj4x0uy" path="res://Assets/Characters/BlacksmithWalk3.png" id="6_adufr"]
+[ext_resource type="Texture2D" uid="uid://cc8ej42xrmna7" path="res://Assets/Characters/BlacksmithWalk4.png" id="7_tghnp"]
+[ext_resource type="Texture2D" uid="uid://bhd7rpiumodlq" path="res://Assets/Characters/BlacksmithWalk5.png" id="8_bbhmo"]
+[ext_resource type="Texture2D" uid="uid://bufi52rjk6ogp" path="res://Assets/Characters/BlacksmithWalk6.png" id="9_80mi5"]
+[ext_resource type="Texture2D" uid="uid://dkbstc7ng4lrw" path="res://Assets/Characters/BlacksmithWalk7.png" id="10_aotss"]
+[ext_resource type="Texture2D" uid="uid://b1kraaj1wv2yb" path="res://Assets/Characters/BlacksmithWalk8.png" id="11_er13l"]
+[ext_resource type="Texture2D" uid="uid://whijplercx7t" path="res://Assets/Tools/Hammer.png" id="12_3aypt"]
+[ext_resource type="Texture2D" uid="uid://cxj2yuou3y1gx" path="res://Assets/Characters/Hand.png" id="13_adufr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2xgwu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_65h7g")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ukn60")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_uc2a1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3aypt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_adufr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_tghnp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_bbhmo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_80mi5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_aotss")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_er13l")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wln4q"]
+radius = 2.0
+height = 6.0
+
+[sub_resource type="Animation" id="Animation_3aypt"]
+resource_name = "Idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ukn60"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Walk"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xmwpc"]
+resource_name = "Walk"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Walk"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667, 0.20000002, 0.23333335, 0.26666668),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("AnimatedSprite2D:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.06987602, 0.15568867, 0.23904955, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -1), Vector2(0, 0), Vector2(0, -1), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xhqad"]
+_data = {
+&"Idle": SubResource("Animation_3aypt"),
+&"RESET": SubResource("Animation_ukn60"),
+&"Walk": SubResource("Animation_xmwpc")
+}
+
+[sub_resource type="Animation" id="Animation_tghnp"]
+resource_name = "Swing"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RightArm:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.4021823, 0.5),
+"transitions": PackedFloat32Array(1, 5, 1, 1),
+"update": 0,
+"values": [Vector2(0, 3), Vector2(-0.8020458, -3.1004043), Vector2(4.4234, 3.21874), Vector2(0, 3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RightArm:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.4021823, 0.5),
+"transitions": PackedFloat32Array(1, 5, 1, 1),
+"update": 0,
+"values": [1.2217305, -1.4713125, 1.9268435, 1.2217305]
+}
+
+[sub_resource type="Animation" id="Animation_bbhmo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RightArm:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RightArm:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.2217305]
+}
+
+[sub_resource type="Animation" id="Animation_adufr"]
+resource_name = "Idle"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_80mi5"]
+_data = {
+&"Idle": SubResource("Animation_adufr"),
+&"RESET": SubResource("Animation_bbhmo"),
+&"Swing": SubResource("Animation_tghnp")
+}
+
+[node name="Blacksmith" type="CharacterBody2D"]
+z_index = 10
+collision_layer = 16
+script = ExtResource("1_wln4q")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2xgwu")
+animation = &"Walk"
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 5)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_wln4q")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_xhqad")
+}
+
+[node name="Arms" type="Node2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Arms"]
+libraries = {
+&"": SubResource("AnimationLibrary_80mi5")
+}
+
+[node name="RightArm" type="Node2D" parent="Arms"]
+position = Vector2(0, 3)
+rotation = 1.2217305
+
+[node name="Hammer" type="Sprite2D" parent="Arms/RightArm"]
+position = Vector2(-0.47695974, -1.425426)
+texture = ExtResource("12_3aypt")
+
+[node name="Hand" type="Sprite2D" parent="Arms/RightArm"]
+texture = ExtResource("13_adufr")
