@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Tool" load_steps=4 format=3 uid="uid://bpei5avknfi34"]
+
+[ext_resource type="Script" uid="uid://et3mj0a0x35h" path="res://Items/Tools/Tool.cs" id="1_j80bp"]
+[ext_resource type="Texture2D" uid="uid://whijplercx7t" path="res://Assets/Tools/Hammer.png" id="1_vda10"]
+[ext_resource type="PackedScene" uid="uid://r1f26xq1mqyp" path="res://Items/Tools/Hammer.tscn" id="2_ldy3v"]
+
+[resource]
+script = ExtResource("1_j80bp")
+Type = 2
+Name = "StarterHammer"
+Icon = ExtResource("1_vda10")
+ItemScene = ExtResource("2_ldy3v")
+metadata/_custom_type_script = "uid://et3mj0a0x35h"

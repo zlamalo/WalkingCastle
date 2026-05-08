@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b430g3osue6qw"
-path="res://.godot/imported/Wood.png-8e91dadb11818ec0601b35b1881542ec.ctex"
+uid="uid://igovqfko5q1n"
+path="res://.godot/imported/SmallWood.png-37ecd958ee6aeb8841eccf9bb93dcd42.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Resources/Wood.png"
-dest_files=["res://.godot/imported/Wood.png-8e91dadb11818ec0601b35b1881542ec.ctex"]
+source_file="res://Assets/Items/SmallWood.png"
+dest_files=["res://.godot/imported/SmallWood.png-37ecd958ee6aeb8841eccf9bb93dcd42.ctex"]
 
 [params]
 

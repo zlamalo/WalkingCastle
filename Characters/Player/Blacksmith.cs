@@ -1,5 +1,5 @@
 using Godot;
-using System;
+using Godot.Collections;
 
 public partial class Blacksmith : CharacterBody2D
 {
@@ -8,8 +8,10 @@ public partial class Blacksmith : CharacterBody2D
 	private AnimatedSprite2D blacksmithSprite;
 	private Node2D arms;
 	private Node2D rightArm;
+	private Node2D leftArm;
 	private bool lookingRight = true;
 
+	public Toolbar Toolbar { get; private set; }
 	public const float Speed = 150.0f;
 
 	public override void _Ready()
@@ -19,6 +21,13 @@ public partial class Blacksmith : CharacterBody2D
 		arms = GetNode<Node2D>("Arms");
 		armsAnimationPlayer = arms.GetNode<AnimationPlayer>("AnimationPlayer");
 		rightArm = arms.GetNode<Node2D>("RightArm");
+		leftArm = arms.GetNode<Node2D>("LeftArm");
+
+		Toolbar = GetNode<Toolbar>("Toolbar");
+		Toolbar.ToolbarSelectedItemChanged += OnToolbarSelectedItemChanged;
+		OnToolbarSelectedItemChanged(Toolbar.selectedItemIndex);
+
+		GlobalNodes.Instance.SetPlayer(this);
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -71,10 +80,37 @@ public partial class Blacksmith : CharacterBody2D
 			if (lookingRight)
 			{
 				rightArm.ZIndex = blacksmithSprite.ZIndex + 1;
+				leftArm.ZIndex = blacksmithSprite.ZIndex - 1;
+
 			}
 			else
 			{
 				rightArm.ZIndex = blacksmithSprite.ZIndex - 1;
+				leftArm.ZIndex = blacksmithSprite.ZIndex + 1;
+			}
+		}
+	}
+
+	private void OnToolbarSelectedItemChanged(int selectedIndex)
+	{
+		var itemPlaceholder = rightArm.GetNode<Node2D>("ItemPlaceholder");
+		itemPlaceholder.GetChildOrNull<Node2D>(0)?.QueueFree();
+		// reset hitbox to default (fist)
+		var hitboxCollisionShape = rightArm.GetNode<CollisionShape2D>("Hitbox/CollisionShape2D");
+		hitboxCollisionShape.Position = Vector2.Zero;
+		hitboxCollisionShape.Shape = new CircleShape2D { Radius = 0.8f };
+
+
+		var itemInstance = Toolbar.Items[selectedIndex]?.ItemScene.Instantiate();
+		if (itemInstance != null)
+		{
+			itemPlaceholder.AddChild(itemInstance);
+
+			if (Toolbar.Items[selectedIndex] is Tool tool)
+			{
+				var newCollisionShape = itemInstance.GetNode<CollisionShape2D>("Area2D/CollisionShape2D");
+				hitboxCollisionShape.Position = newCollisionShape.Position;
+				hitboxCollisionShape.Shape = newCollisionShape.Shape;
 			}
 		}
 	}
