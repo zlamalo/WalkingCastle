@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ttgw0jf3firc"]
+[gd_scene load_steps=5 format=3 uid="uid://ttgw0jf3firc"]
 
 [ext_resource type="Script" uid="uid://0onjuphh31gq" path="res://UserInterface/ItemSlotUi.cs" id="1_ifstc"]
 [ext_resource type="Texture2D" uid="uid://drqycmrfgi47u" path="res://icon.svg" id="2_41suf"]
 [ext_resource type="Texture2D" uid="uid://130srsbqysn8" path="res://Assets/UserInterface/Frame.png" id="3_xtxig"]
+[ext_resource type="LabelSettings" uid="uid://kwk4bnl5c7h6" path="res://Assets/Fonts/DefaultLabelSettings.tres" id="4_j2gkj"]
 
 [node name="ItemSlotUi" type="Panel"]
 custom_minimum_size = Vector2(32, 32)
@@ -18,8 +19,11 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -16.0
+offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2, 2)
 texture = ExtResource("3_xtxig")
 region_rect = Rect2(0, 0, 16, 16)
 patch_margin_left = 2
@@ -27,7 +31,7 @@ patch_margin_top = 2
 patch_margin_right = 2
 patch_margin_bottom = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="Border"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(16, 16)
 scale = Vector2(2, 2)
 
@@ -37,3 +41,13 @@ self_modulate = Color(1, 1, 1, 0.22352941)
 position = Vector2(16, 16)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_41suf")
+
+[node name="ItemCountLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 22.0
+offset_right = 5.0
+offset_bottom = 30.0
+label_settings = ExtResource("4_j2gkj")
+horizontal_alignment = 1
+vertical_alignment = 1

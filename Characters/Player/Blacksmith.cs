@@ -9,6 +9,7 @@ public partial class Blacksmith : CharacterBody2D
 	private Node2D arms;
 	private Node2D rightArm;
 	private Node2D leftArm;
+	private Area2D pickupRange;
 	private bool lookingRight = true;
 
 	public Toolbar Toolbar { get; private set; }
@@ -22,6 +23,7 @@ public partial class Blacksmith : CharacterBody2D
 		armsAnimationPlayer = arms.GetNode<AnimationPlayer>("AnimationPlayer");
 		rightArm = arms.GetNode<Node2D>("RightArm");
 		leftArm = arms.GetNode<Node2D>("LeftArm");
+		pickupRange = GetNode<Area2D>("PickupRange");
 
 		Toolbar = GetNode<Toolbar>("Toolbar");
 		Toolbar.ToolbarSelectedItemChanged += OnToolbarSelectedItemChanged;
@@ -29,6 +31,26 @@ public partial class Blacksmith : CharacterBody2D
 
 		GlobalNodes.Instance.SetPlayer(this);
 	}
+
+	public override void _Input(InputEvent @event)
+	{
+		base._Input(@event);
+		if (Input.IsActionPressed("Interact"))
+		{
+			GD.Print(pickupRange.GetOverlappingAreas().Count);
+			foreach (var area in pickupRange.GetOverlappingAreas())
+			{
+				if (area is ItemBase item)
+				{
+					GD.Print($"Toolbar before adding item: {Toolbar.Items}");
+					Toolbar.AddItem(item.Item);
+					item.QueueFree();
+				}
+			}
+			pickupRange.GetOverlappingAreas();
+		}
+	}
+
 
 	public override void _PhysicsProcess(double delta)
 	{
@@ -100,7 +122,9 @@ public partial class Blacksmith : CharacterBody2D
 		hitboxCollisionShape.Position = Vector2.Zero;
 		hitboxCollisionShape.Shape = new CircleShape2D { Radius = 0.8f };
 
-
+		var item = Toolbar.Items[selectedIndex];
+		if (item == null || item.ItemScene == null || item is not Tool)
+			return;
 		var itemInstance = Toolbar.Items[selectedIndex]?.ItemScene.Instantiate();
 		if (itemInstance != null)
 		{
@@ -113,5 +137,10 @@ public partial class Blacksmith : CharacterBody2D
 				hitboxCollisionShape.Shape = newCollisionShape.Shape;
 			}
 		}
+	}
+
+	private void OnItemInRange(Area2D item)
+	{
+		GlobalServices.Instance.TooltipService.ShowTooltip(this, new Vector2(0, -16), "Press F to pickup items");
 	}
 }

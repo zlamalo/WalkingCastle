@@ -34,11 +34,11 @@ public partial class ToolbarUi : Control
 		{
 			if (i < newToolBarItems.Count)
 			{
-				itemSlots[i].ItemSprite.Texture = newToolBarItems[i]?.Icon;
+				itemSlots[i].UpdateItem(newToolBarItems[i]);
 			}
 			else
 			{
-				itemSlots[i].ItemSprite.Texture = null;
+				itemSlots[i].UpdateItem(null);
 			}
 		}
 	}

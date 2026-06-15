@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c2h5amesqewgq"]
+[gd_scene load_steps=28 format=3 uid="uid://c2h5amesqewgq"]
 
 [ext_resource type="Texture2D" uid="uid://nef0k6upbtlk" path="res://Assets/Characters/Blacksmith.png" id="1_65h7g"]
 [ext_resource type="Script" uid="uid://7v6uouvv5jn1" path="res://Characters/Player/Blacksmith.cs" id="1_wln4q"]
@@ -341,6 +341,9 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_tghnp"]
 radius = 0.8
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_bbhmo"]
+radius = 9.0
+
 [node name="Blacksmith" type="CharacterBody2D"]
 z_index = 10
 collision_layer = 16
@@ -351,7 +354,6 @@ sprite_frames = SubResource("SpriteFrames_2xgwu")
 animation = &"Walk"
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 5)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_wln4q")
@@ -400,3 +402,12 @@ texture = ExtResource("13_adufr")
 [node name="Toolbar" type="Node" parent="."]
 script = ExtResource("14_bbhmo")
 Items = Array[Object]([ExtResource("3_bbhmo"), ExtResource("16_80mi5"), null, null, null, null, null, null, null])
+
+[node name="PickupRange" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupRange"]
+shape = SubResource("CircleShape2D_bbhmo")
+
+[connection signal="area_entered" from="PickupRange" to="." method="OnItemInRange"]

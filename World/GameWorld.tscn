@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=4 uid="uid://coqpmwsidddvs"]
+[gd_scene load_steps=9 format=4 uid="uid://coqpmwsidddvs"]
 
 [ext_resource type="Script" uid="uid://ccpbsn2phbex5" path="res://World/GameWorld.cs" id="1_rt6fa"]
 [ext_resource type="Texture2D" uid="uid://dw5girbnmy787" path="res://Assets/Tilesets/TileSet.png" id="2_c7dk1"]
 [ext_resource type="PackedScene" uid="uid://c2h5amesqewgq" path="res://Characters/Player/Blacksmith.tscn" id="2_uhmx5"]
 [ext_resource type="PackedScene" uid="uid://cpg21geqj3gsx" path="res://UserInterface/ToolbarUi.tscn" id="4_3k2l0"]
+[ext_resource type="PackedScene" uid="uid://basgog1rueobw" path="res://Items/ItemBase.tscn" id="5_xw5dl"]
+[ext_resource type="Resource" uid="uid://cs17p11wfatc6" path="res://Items/Materials/Resources/Wood.tres" id="6_i71ww"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3k2l0"]
 texture = ExtResource("2_c7dk1")
@@ -242,6 +244,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
+mouse_filter = 1
 
 [node name="Toolbar" parent="CanvasLayer/UserInterface" instance=ExtResource("4_3k2l0")]
 layout_mode = 1
@@ -253,3 +256,11 @@ tile_set = SubResource("TileSet_xw5dl")
 [node name="Blacksmith" parent="." instance=ExtResource("2_uhmx5")]
 
 [node name="Camera2D" type="Camera2D" parent="Blacksmith"]
+
+[node name="ItemBase" parent="." instance=ExtResource("5_xw5dl")]
+position = Vector2(31, -32)
+Item = ExtResource("6_i71ww")
+
+[node name="ItemBase2" parent="." instance=ExtResource("5_xw5dl")]
+position = Vector2(12, -36)
+Item = ExtResource("6_i71ww")
