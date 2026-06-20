@@ -1,7 +1,8 @@
+using System;
 using Godot;
 using Godot.Collections;
 
-public partial class Blacksmith : CharacterBody2D
+public partial class Player : CharacterBody2D
 {
 	private AnimationPlayer bodyAnimationPlayer;
 	private AnimationPlayer armsAnimationPlayer;
@@ -13,7 +14,7 @@ public partial class Blacksmith : CharacterBody2D
 	private bool lookingRight = true;
 
 	[Export]
-	public Array<Item> StarterItems { get; set; }
+	private Array<Item> starterItems = [];
 
 	public Inventory Inventory { get; private set; }
 	public const float Speed = 150.0f;
@@ -26,10 +27,10 @@ public partial class Blacksmith : CharacterBody2D
 		armsAnimationPlayer = arms.GetNode<AnimationPlayer>("AnimationPlayer");
 		rightArm = arms.GetNode<Node2D>("RightArm");
 		leftArm = arms.GetNode<Node2D>("LeftArm");
-		pickupRange = GetNode<Area2D>("PickupRange");
+		pickupRange = GetNode<Area2D>("AttractRange");
 
 		Inventory = GetNode<Inventory>("Inventory");
-		foreach (var item in StarterItems)
+		foreach (var item in starterItems)
 		{
 			Inventory.AddItem(item);
 		}
@@ -144,8 +145,35 @@ public partial class Blacksmith : CharacterBody2D
 		}
 	}
 
-	private void OnItemInRange(Area2D item)
+	private void OnItemInAttrackRange(Area2D item)
 	{
-		GlobalServices.Instance.TooltipService.ShowTooltip(this, new Vector2(0, -16), "Press F to pickup items");
+		if (!GlobalServices.Instance.GameSettings.AutoPickup)
+		{
+			GlobalServices.Instance.TooltipService.ShowTooltip(this, new Vector2(0, -16), "Press F to pickup items");
+		}
+		else
+		{
+			if (item is ItemBase itemBase)
+			{
+				itemBase.SetAttractorNode(this);
+			}
+		}
+
+	}
+
+	private void OnItemInPickupRange(Area2D itemNode)
+	{
+		if (itemNode is ItemBase itemBase)
+		{
+			var item = itemBase.Item;
+			var quantity = item is StackableItem stackable
+				? stackable.Quantity
+				: 1;
+
+			GlobalServices.Instance.InformationLogService.DisplayInformation(
+				$"Picked up {quantity} {item.ItemResource.Name}");
+			Inventory.AddItem(item);
+			itemBase.QueueFree();
+		}
 	}
 }

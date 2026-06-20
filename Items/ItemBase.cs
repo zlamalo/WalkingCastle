@@ -5,6 +5,7 @@ public partial class ItemBase : Area2D
 {
 	private Sprite2D sprite;
 	private ShaderMaterial shaderMaterial;
+	private Node2D attractorNode = null;
 
 	private PackedScene textPanelScene = GD.Load<PackedScene>("res://UserInterface/TextPanelUi.tscn");
 
@@ -23,6 +24,19 @@ public partial class ItemBase : Area2D
 		sprite.Texture = Item?.ItemResource?.Icon;
 
 		shaderMaterial = sprite.Material as ShaderMaterial;
+	}
+
+	public override void _Process(double delta)
+	{
+		if (attractorNode != null)
+		{
+			GlobalPosition = GlobalPosition.MoveToward(attractorNode.GlobalPosition, 100 * (float)delta);
+		}
+	}
+
+	public void SetAttractorNode(Node2D node)
+	{
+		attractorNode = node;
 	}
 
 	private void Highlight(bool highlight)

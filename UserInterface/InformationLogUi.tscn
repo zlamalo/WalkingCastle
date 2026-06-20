@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8l1f1p3fl1s"]
+
+[ext_resource type="Theme" uid="uid://cpixop7eye5jf" path="res://Assets/UserInterface/MyTheme.tres" id="1_5gtgl"]
+[ext_resource type="Script" uid="uid://bx8dkne1jt8u5" path="res://UserInterface/InformationLogUi.cs" id="2_u6r7m"]
+
+[node name="InformationLogUi" type="Control"]
+layout_mode = 3
+anchor_right = 0.15
+anchor_bottom = 0.35833332
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_5gtgl")
+script = ExtResource("2_u6r7m")
+metadata/_edit_use_anchors_ = true
+
+[node name="Logs" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InformationLogEntryUi" parent="Logs" instance_placeholder="res://UserInterface/InformationLogEntryUi.tscn"]
+layout_mode = 2
+text = "Testing log"
+
+[node name="InformationLogEntryUi2" parent="Logs" instance_placeholder="res://UserInterface/InformationLogEntryUi.tscn"]
+layout_mode = 2

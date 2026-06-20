@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhy3las8gvef6"]
+
+[ext_resource type="PackedScene" uid="uid://cpg21geqj3gsx" path="res://UserInterface/ToolbarUi.tscn" id="1_xxg0p"]
+[ext_resource type="PackedScene" uid="uid://c8l1f1p3fl1s" path="res://UserInterface/InformationLogUi.tscn" id="2_rbx37"]
+
+[node name="PlayerGeneralUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ToolbarUi" parent="." instance=ExtResource("1_xxg0p")]
+layout_mode = 1
+
+[node name="InformationLogUi" parent="." instance=ExtResource("2_rbx37")]
+layout_mode = 1
+anchor_right = 0.240625
+anchor_bottom = 0.53333336

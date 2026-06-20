@@ -13,11 +13,12 @@ public partial class GlobalNodes : Node
     }
 
     [Signal]
-    public delegate void PlayerReadyEventHandler(Blacksmith newPlayer);
+    public delegate void PlayerReadyEventHandler(Player newPlayer);
 
-    public Blacksmith Player { get; set; }
+    public Player Player { get; set; }
+    public InformationLogUi InformationLogUi { get; set; }
 
-    public void SetPlayer(Blacksmith player)
+    public void SetPlayer(Player player)
     {
         Player = player;
         EmitSignal(SignalName.PlayerReady, player);

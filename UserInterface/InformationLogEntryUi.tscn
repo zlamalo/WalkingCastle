@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://d13q2x4w2c4u3"]
+
+[ext_resource type="Theme" uid="uid://cpixop7eye5jf" path="res://Assets/UserInterface/MyTheme.tres" id="1_q22sq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3ig6m"]
+font_size = 8
+font_color = Color(0.58, 0.58, 0.58, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="InformationLogEntryUi" type="Label"]
+offset_right = 18.0
+offset_bottom = 8.0
+theme = ExtResource("1_q22sq")
+text = "test"
+label_settings = SubResource("LabelSettings_3ig6m")

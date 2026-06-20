@@ -1,37 +1,37 @@
-[gd_scene load_steps=31 format=3 uid="uid://c2h5amesqewgq"]
+[gd_scene load_steps=32 format=3 uid="uid://c2h5amesqewgq"]
 
-[ext_resource type="Texture2D" uid="uid://nef0k6upbtlk" path="res://Assets/Characters/Blacksmith.png" id="1_65h7g"]
-[ext_resource type="Script" uid="uid://7v6uouvv5jn1" path="res://Characters/Player/Blacksmith.cs" id="1_wln4q"]
-[ext_resource type="Resource" uid="uid://bpei5avknfi34" path="res://Items/Tools/Resources/Hammer.tres" id="3_bbhmo"]
-[ext_resource type="Texture2D" uid="uid://bkw0i7o6bp8x2" path="res://Assets/Characters/BlacksmithWalk0.png" id="3_ukn60"]
-[ext_resource type="Texture2D" uid="uid://ck58fdq3mm313" path="res://Assets/Characters/BlacksmithWalk1.png" id="4_uc2a1"]
-[ext_resource type="Texture2D" uid="uid://bjp032vwjya2n" path="res://Assets/Characters/BlacksmithWalk2.png" id="5_3aypt"]
-[ext_resource type="Texture2D" uid="uid://cxtg7wwj4x0uy" path="res://Assets/Characters/BlacksmithWalk3.png" id="6_adufr"]
-[ext_resource type="Texture2D" uid="uid://cc8ej42xrmna7" path="res://Assets/Characters/BlacksmithWalk4.png" id="7_tghnp"]
-[ext_resource type="Texture2D" uid="uid://bhd7rpiumodlq" path="res://Assets/Characters/BlacksmithWalk5.png" id="8_bbhmo"]
-[ext_resource type="Texture2D" uid="uid://bufi52rjk6ogp" path="res://Assets/Characters/BlacksmithWalk6.png" id="9_80mi5"]
-[ext_resource type="Texture2D" uid="uid://dkbstc7ng4lrw" path="res://Assets/Characters/BlacksmithWalk7.png" id="10_aotss"]
-[ext_resource type="Texture2D" uid="uid://b1kraaj1wv2yb" path="res://Assets/Characters/BlacksmithWalk8.png" id="11_er13l"]
-[ext_resource type="Script" uid="uid://bb8b6erev0dpi" path="res://Items/Inventory.cs" id="13_3aypt"]
-[ext_resource type="Texture2D" uid="uid://cxj2yuou3y1gx" path="res://Assets/Characters/Hand.png" id="13_adufr"]
-[ext_resource type="Script" uid="uid://dh5em13dks75w" path="res://Items/Item.cs" id="15_bbhmo"]
-[ext_resource type="Resource" uid="uid://don4ehhb440lh" path="res://Items/Tools/Resources/Axe.tres" id="16_80mi5"]
+[ext_resource type="Script" uid="uid://cwauo217hdmxh" path="res://Characters/Player/Player.cs" id="1_wraqo"]
+[ext_resource type="Resource" uid="uid://bpei5avknfi34" path="res://Items/Tools/Resources/Hammer.tres" id="2_5xivi"]
+[ext_resource type="Script" uid="uid://dh5em13dks75w" path="res://Items/Item.cs" id="3_k8aph"]
+[ext_resource type="Resource" uid="uid://don4ehhb440lh" path="res://Items/Tools/Resources/Axe.tres" id="4_74fb0"]
+[ext_resource type="Texture2D" uid="uid://nef0k6upbtlk" path="res://Assets/Characters/Blacksmith.png" id="5_870kv"]
+[ext_resource type="Texture2D" uid="uid://bkw0i7o6bp8x2" path="res://Assets/Characters/BlacksmithWalk0.png" id="6_u61tb"]
+[ext_resource type="Texture2D" uid="uid://ck58fdq3mm313" path="res://Assets/Characters/BlacksmithWalk1.png" id="7_u4bhk"]
+[ext_resource type="Texture2D" uid="uid://bjp032vwjya2n" path="res://Assets/Characters/BlacksmithWalk2.png" id="8_6hnbq"]
+[ext_resource type="Texture2D" uid="uid://cxtg7wwj4x0uy" path="res://Assets/Characters/BlacksmithWalk3.png" id="9_1t7vx"]
+[ext_resource type="Texture2D" uid="uid://cc8ej42xrmna7" path="res://Assets/Characters/BlacksmithWalk4.png" id="10_tdp7v"]
+[ext_resource type="Texture2D" uid="uid://bhd7rpiumodlq" path="res://Assets/Characters/BlacksmithWalk5.png" id="11_11ayp"]
+[ext_resource type="Texture2D" uid="uid://bufi52rjk6ogp" path="res://Assets/Characters/BlacksmithWalk6.png" id="12_bfeqw"]
+[ext_resource type="Texture2D" uid="uid://dkbstc7ng4lrw" path="res://Assets/Characters/BlacksmithWalk7.png" id="13_mvuje"]
+[ext_resource type="Texture2D" uid="uid://b1kraaj1wv2yb" path="res://Assets/Characters/BlacksmithWalk8.png" id="14_b2tcm"]
+[ext_resource type="Texture2D" uid="uid://cxj2yuou3y1gx" path="res://Assets/Characters/Hand.png" id="15_xudko"]
+[ext_resource type="Script" uid="uid://bb8b6erev0dpi" path="res://Items/Inventory.cs" id="16_rgtww"]
 
-[sub_resource type="Resource" id="Resource_bbhmo"]
-script = ExtResource("15_bbhmo")
-ItemResource = ExtResource("3_bbhmo")
+[sub_resource type="Resource" id="Resource_7jpmk"]
+script = ExtResource("3_k8aph")
+ItemResource = ExtResource("2_5xivi")
 metadata/_custom_type_script = "uid://dh5em13dks75w"
 
-[sub_resource type="Resource" id="Resource_80mi5"]
-script = ExtResource("15_bbhmo")
-ItemResource = ExtResource("16_80mi5")
+[sub_resource type="Resource" id="Resource_5xivi"]
+script = ExtResource("3_k8aph")
+ItemResource = ExtResource("4_74fb0")
 metadata/_custom_type_script = "uid://dh5em13dks75w"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2xgwu"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_65h7g")
+"texture": ExtResource("5_870kv")
 }],
 "loop": true,
 "name": &"Idle",
@@ -39,31 +39,31 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_ukn60")
+"texture": ExtResource("6_u61tb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_uc2a1")
+"texture": ExtResource("7_u4bhk")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_3aypt")
+"texture": ExtResource("8_6hnbq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_adufr")
+"texture": ExtResource("9_1t7vx")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_tghnp")
+"texture": ExtResource("10_tdp7v")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_bbhmo")
+"texture": ExtResource("11_11ayp")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_80mi5")
+"texture": ExtResource("12_bfeqw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_aotss")
+"texture": ExtResource("13_mvuje")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_er13l")
+"texture": ExtResource("14_b2tcm")
 }],
 "loop": true,
 "name": &"Walk",
@@ -353,13 +353,16 @@ _data = {
 radius = 0.8
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bbhmo"]
-radius = 9.0
+radius = 14.035668
 
-[node name="Blacksmith" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_7jpmk"]
+radius = 1.0
+
+[node name="Player" type="CharacterBody2D"]
 z_index = 10
 collision_layer = 16
-script = ExtResource("1_wln4q")
-StarterItems = Array[Object]([SubResource("Resource_bbhmo"), SubResource("Resource_80mi5")])
+script = ExtResource("1_wraqo")
+starterItems = Array[ExtResource("3_k8aph")]([SubResource("Resource_7jpmk"), SubResource("Resource_5xivi")])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2xgwu")
@@ -390,7 +393,7 @@ rotation = 1.2217305
 [node name="ItemPlaceholder" type="Node2D" parent="Arms/RightArm"]
 
 [node name="Hand" type="Sprite2D" parent="Arms/RightArm"]
-texture = ExtResource("13_adufr")
+texture = ExtResource("15_xudko")
 
 [node name="Hitbox" type="Area2D" parent="Arms/RightArm"]
 collision_layer = 16
@@ -407,18 +410,26 @@ position = Vector2(0, 3)
 rotation = 1.2217305
 
 [node name="Hand" type="Sprite2D" parent="Arms/LeftArm"]
-texture = ExtResource("13_adufr")
+texture = ExtResource("15_xudko")
 
 [node name="ItemPlaceholder" type="Node2D" parent="Arms/LeftArm"]
 
 [node name="Inventory" type="Node" parent="."]
-script = ExtResource("13_3aypt")
+script = ExtResource("16_rgtww")
 
-[node name="PickupRange" type="Area2D" parent="."]
+[node name="AttractRange" type="Area2D" parent="."]
 collision_layer = 16
 collision_mask = 256
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupRange"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttractRange"]
 shape = SubResource("CircleShape2D_bbhmo")
 
-[connection signal="area_entered" from="PickupRange" to="." method="OnItemInRange"]
+[node name="PickupArea" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
+shape = SubResource("CircleShape2D_7jpmk")
+
+[connection signal="area_entered" from="AttractRange" to="." method="OnItemInAttrackRange"]
+[connection signal="area_entered" from="PickupArea" to="." method="OnItemInPickupRange"]

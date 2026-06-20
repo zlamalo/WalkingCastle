@@ -18,7 +18,7 @@ public partial class ToolbarUi : Control
 		GlobalNodes.Instance.PlayerReady += OnPlayerReady;
 	}
 
-	private void OnPlayerReady(Blacksmith player)
+	private void OnPlayerReady(Player player)
 	{
 		OnInventoryChanged(player.Inventory.Items);
 		OnToolbarSelectedItemChanged(player.Inventory.selectedItemIndex);
