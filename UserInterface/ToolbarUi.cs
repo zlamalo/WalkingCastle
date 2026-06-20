@@ -1,17 +1,22 @@
 using Godot;
 using Godot.Collections;
 
-public partial class ToolbarUi : Control
+public partial class ToolbarUi : PanelContainer
 {
+	private PackedScene itemSlotScene = GD.Load<PackedScene>("res://UserInterface/ItemSlotUi.tscn");
+
+	private HBoxContainer toolbarItems;
+
 	private Array<ItemSlotUi> itemSlots = [];
 	private int highlightedIndex = -1;
 
 	public override void _Ready()
 	{
+		toolbarItems = GetNode<HBoxContainer>("%ToolbarItems");
 		for (int i = 1; i <= Inventory.ToolbarSize; i++)
 		{
-			// suboptimal right now, there are physically placed nodes that match the count
-			var itemSlot = GetNode<ItemSlotUi>($"ToolbarItems/ItemSlotUi{i}");
+			var itemSlot = itemSlotScene.Instantiate<ItemSlotUi>();
+			toolbarItems.AddChild(itemSlot);
 			itemSlots.Add(itemSlot);
 		}
 

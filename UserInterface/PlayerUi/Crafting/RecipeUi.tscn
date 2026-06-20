@@ -20,7 +20,7 @@ layout_mode = 2
 [node name="PanelContainer" type="PanelContainer" parent="PanelContainer"]
 layout_mode = 2
 size_flags_vertical = 0
-theme_type_variation = &"PatchPanelContainer"
+theme_type_variation = &"PanelContainerPatch"
 
 [node name="ResultItem" parent="PanelContainer/PanelContainer" instance=ExtResource("2_7kih4")]
 unique_name_in_owner = true

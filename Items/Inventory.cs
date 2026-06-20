@@ -25,10 +25,20 @@ public partial class Inventory : Node
             selectedItemIndex = (selectedItemIndex - 1 + ToolbarSize) % ToolbarSize;
             EmitSignal(SignalName.ToolbarSelectedItemChanged, selectedItemIndex);
         }
-        else if (Input.IsActionJustPressed("ScrollDown"))
+        if (Input.IsActionJustPressed("ScrollDown"))
         {
             selectedItemIndex = (selectedItemIndex + 1) % ToolbarSize;
             EmitSignal(SignalName.ToolbarSelectedItemChanged, selectedItemIndex);
+        }
+        for (int i = 0; i < ToolbarSize; i++)
+        {
+            // Slightly scuffed, since it behaves like generated, but the actions must be defined
+            // Right now there is action for Item0 to Item8
+            if (Input.IsActionJustPressed($"Item{i}"))
+            {
+                selectedItemIndex = i;
+                EmitSignal(SignalName.ToolbarSelectedItemChanged, selectedItemIndex);
+            }
         }
     }
 

@@ -15,4 +15,4 @@ shape = SubResource("CircleShape2D_oqo43")
 
 [node name="Hammer" type="Sprite2D" parent="."]
 texture = ExtResource("1_4mds6")
-offset = Vector2(-0.5, -1.5)
+offset = Vector2(0.5, -1.5)

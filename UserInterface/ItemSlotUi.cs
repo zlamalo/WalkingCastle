@@ -1,18 +1,18 @@
 using Godot;
 using System;
 
-public partial class ItemSlotUi : Panel
+public partial class ItemSlotUi : PanelContainer
 {
-	private NinePatchRect border;
-	private Sprite2D itemSprite;
+	//private NinePatchRect border;
+	private TextureRect itemSprite;
 	private Label itemCountLabel;
 
 	public bool Highlighted { get; set; } = false;
 
 	public override void _Ready()
 	{
-		border = GetNode<NinePatchRect>("Border");
-		itemSprite = GetNode<Sprite2D>("Sprite2D");
+		//border = GetNode<NinePatchRect>("Border");
+		itemSprite = GetNode<TextureRect>("%ItemSprite");
 		itemCountLabel = GetNode<Label>("ItemCountLabel");
 	}
 
@@ -43,11 +43,11 @@ public partial class ItemSlotUi : Panel
 		Highlighted = highlight;
 		if (Highlighted)
 		{
-			border.SelfModulate = Colors.LimeGreen;
+			SelfModulate = Colors.LimeGreen;
 		}
 		else
 		{
-			border.SelfModulate = Colors.White;
+			SelfModulate = Colors.White;
 		}
 	}
 }
