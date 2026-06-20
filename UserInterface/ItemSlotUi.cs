@@ -18,9 +18,9 @@ public partial class ItemSlotUi : Panel
 
 	public void UpdateItem(Item item)
 	{
-		if (item != null)
+		if (item != null && item.ItemResource != null)
 		{
-			itemSprite.Texture = item.Icon;
+			itemSprite.Texture = item.ItemResource.Icon;
 			if (item is StackableItem stackableItem)
 			{
 				itemCountLabel.Text = stackableItem.Quantity.ToString();

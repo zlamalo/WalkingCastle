@@ -11,4 +11,6 @@ public class GlobalServices
     }
 
     public TooltipService TooltipService = new();
+    public RecipeService RecipeService = new();
+    public ResourceLoaderService ResourceLoaderService = new();
 }

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dy81h43vqxqed"]
+
+[ext_resource type="Script" uid="uid://dhq3qbeljd8qd" path="res://UserInterface/PlayerUi/PlayerInventoryUi.cs" id="1_f0rwj"]
+[ext_resource type="PackedScene" uid="uid://cfw0vnkjs0fk2" path="res://UserInterface/PlayerUi/Crafting/CraftingListUi.tscn" id="1_ymwkk"]
+
+[node name="PlayerInventoryUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f0rwj")
+
+[node name="CraftingListUi" parent="." instance=ExtResource("1_ymwkk")]
+layout_mode = 1

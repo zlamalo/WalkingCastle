@@ -20,7 +20,7 @@ public partial class ItemBase : Area2D
 		}
 
 		sprite = GetNode<Sprite2D>("Sprite2D");
-		sprite.Texture = Item?.Icon;
+		sprite.Texture = Item?.ItemResource?.Icon;
 
 		shaderMaterial = sprite.Material as ShaderMaterial;
 	}

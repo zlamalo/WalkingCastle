@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfw0vnkjs0fk2"]
+
+[ext_resource type="Script" uid="uid://btwdpi02noe2f" path="res://UserInterface/PlayerUi/Crafting/CraftingListUi.cs" id="1_4jepl"]
+[ext_resource type="Resource" uid="uid://cpv2opb7vpg7l" path="res://Items/Recipes/Resources/HammerRecipe.tres" id="2_kwsam"]
+[ext_resource type="Resource" uid="uid://cxodk2d4oljkp" path="res://Items/Recipes/Resources/AxeRecipe.tres" id="4_usrdb"]
+[ext_resource type="Theme" uid="uid://cpixop7eye5jf" path="res://Assets/UserInterface/MyTheme.tres" id="5_2nf52"]
+
+[node name="CraftingListUi" type="PanelContainer"]
+anchors_preset = -1
+anchor_right = 0.2109375
+anchor_bottom = 0.53333336
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_2nf52")
+theme_type_variation = &"PaperPanelContainer"
+script = ExtResource("1_4jepl")
+Recipes = Array[Object]([ExtResource("2_kwsam"), ExtResource("4_usrdb")])
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="RecipesContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="RecipesList" type="VBoxContainer" parent="VBoxContainer/RecipesContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="RecipeUi" parent="VBoxContainer/RecipesContainer/RecipesList" instance_placeholder="res://UserInterface/PlayerUi/Crafting/RecipeUi.tscn"]
+layout_mode = 2
+
+[node name="RecipeUi2" parent="VBoxContainer/RecipesContainer/RecipesList" instance_placeholder="res://UserInterface/PlayerUi/Crafting/RecipeUi.tscn"]
+layout_mode = 2
+
+[node name="RecipeUi3" parent="VBoxContainer/RecipesContainer/RecipesList" instance_placeholder="res://UserInterface/PlayerUi/Crafting/RecipeUi.tscn"]
+layout_mode = 2
+
+[node name="RecipeUi4" parent="VBoxContainer/RecipesContainer/RecipesList" instance_placeholder="res://UserInterface/PlayerUi/Crafting/RecipeUi.tscn"]
+layout_mode = 2
+
+[node name="CraftButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("5_2nf52")
+text = "CraftItem"
+
+[connection signal="button_up" from="VBoxContainer/CraftButton" to="." method="CraftSelectedRecipe"]

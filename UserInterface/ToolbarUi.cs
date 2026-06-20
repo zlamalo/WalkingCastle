@@ -8,7 +8,7 @@ public partial class ToolbarUi : Control
 
 	public override void _Ready()
 	{
-		for (int i = 1; i <= 9; i++)
+		for (int i = 1; i <= Inventory.ToolbarSize; i++)
 		{
 			// suboptimal right now, there are physically placed nodes that match the count
 			var itemSlot = GetNode<ItemSlotUi>($"ToolbarItems/ItemSlotUi{i}");
@@ -20,21 +20,21 @@ public partial class ToolbarUi : Control
 
 	private void OnPlayerReady(Blacksmith player)
 	{
-		OnToolBarChanged(player.Toolbar.Items);
-		OnToolbarSelectedItemChanged(player.Toolbar.selectedItemIndex);
-		highlightedIndex = player.Toolbar.selectedItemIndex;
+		OnInventoryChanged(player.Inventory.Items);
+		OnToolbarSelectedItemChanged(player.Inventory.selectedItemIndex);
+		highlightedIndex = player.Inventory.selectedItemIndex;
 
-		player.Toolbar.ToolBarChanged += OnToolBarChanged;
-		player.Toolbar.ToolbarSelectedItemChanged += OnToolbarSelectedItemChanged;
+		player.Inventory.InventoryChanged += OnInventoryChanged;
+		player.Inventory.ToolbarSelectedItemChanged += OnToolbarSelectedItemChanged;
 	}
 
-	private void OnToolBarChanged(Array<Item> newToolBarItems)
+	private void OnInventoryChanged(Array<Item> newItems)
 	{
 		for (int i = 0; i < itemSlots.Count; i++)
 		{
-			if (i < newToolBarItems.Count)
+			if (i < newItems.Count)
 			{
-				itemSlots[i].UpdateItem(newToolBarItems[i]);
+				itemSlots[i].UpdateItem(newItems[i]);
 			}
 			else
 			{

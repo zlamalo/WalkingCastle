@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmyrf55h86eb2"]
+
+[ext_resource type="Script" uid="uid://btcy1p2vkmn1y" path="res://UserInterface/PlayerUi/Crafting/RecipeUi.cs" id="1_3q3lk"]
+[ext_resource type="Theme" uid="uid://cpixop7eye5jf" path="res://Assets/UserInterface/MyTheme.tres" id="1_qaudw"]
+[ext_resource type="PackedScene" uid="uid://djdd3qw57ova2" path="res://UserInterface/PlayerUi/Crafting/RecipeItemSlotUi.tscn" id="2_7kih4"]
+
+[node name="RecipeUi" type="PanelContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 38.0
+grow_horizontal = 2
+size_flags_vertical = 3
+focus_mode = 1
+theme = ExtResource("1_qaudw")
+script = ExtResource("1_3q3lk")
+
+[node name="PanelContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_type_variation = &"PatchPanelContainer"
+
+[node name="ResultItem" parent="PanelContainer/PanelContainer" instance=ExtResource("2_7kih4")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="IngredientsContainer" type="GridContainer" parent="PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 4
+
+[node name="RecipeItemSlotUi" parent="PanelContainer/IngredientsContainer" instance=ExtResource("2_7kih4")]
+layout_mode = 2
+
+[node name="RecipeItemSlotUi2" parent="PanelContainer/IngredientsContainer" instance=ExtResource("2_7kih4")]
+layout_mode = 2
+
+[node name="RecipeItemSlotUi3" parent="PanelContainer/IngredientsContainer" instance=ExtResource("2_7kih4")]
+visible = false
+layout_mode = 2
+
+[node name="RecipeItemSlotUi4" parent="PanelContainer/IngredientsContainer" instance=ExtResource("2_7kih4")]
+visible = false
+layout_mode = 2
+
+[node name="RecipeItemSlotUi5" parent="PanelContainer/IngredientsContainer" instance=ExtResource("2_7kih4")]
+visible = false
+layout_mode = 2
+
+[node name="RecipeItemSlotUi6" parent="PanelContainer/IngredientsContainer" instance=ExtResource("2_7kih4")]
+visible = false
+layout_mode = 2
+
+[node name="RecipeItemSlotUi7" parent="PanelContainer/IngredientsContainer" instance=ExtResource("2_7kih4")]
+visible = false
+layout_mode = 2
+
+[node name="RecipeItemSlotUi8" parent="PanelContainer/IngredientsContainer" instance=ExtResource("2_7kih4")]
+visible = false
+layout_mode = 2
+
+[node name="RecipeItemSlotUi9" parent="PanelContainer/IngredientsContainer" instance=ExtResource("2_7kih4")]
+visible = false
+layout_mode = 2
+
+[connection signal="focus_entered" from="." to="." method="OnFocusEntered"]

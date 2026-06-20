@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://c2h5amesqewgq"]
+[gd_scene load_steps=31 format=3 uid="uid://c2h5amesqewgq"]
 
 [ext_resource type="Texture2D" uid="uid://nef0k6upbtlk" path="res://Assets/Characters/Blacksmith.png" id="1_65h7g"]
 [ext_resource type="Script" uid="uid://7v6uouvv5jn1" path="res://Characters/Player/Blacksmith.cs" id="1_wln4q"]
@@ -12,9 +12,20 @@
 [ext_resource type="Texture2D" uid="uid://bufi52rjk6ogp" path="res://Assets/Characters/BlacksmithWalk6.png" id="9_80mi5"]
 [ext_resource type="Texture2D" uid="uid://dkbstc7ng4lrw" path="res://Assets/Characters/BlacksmithWalk7.png" id="10_aotss"]
 [ext_resource type="Texture2D" uid="uid://b1kraaj1wv2yb" path="res://Assets/Characters/BlacksmithWalk8.png" id="11_er13l"]
+[ext_resource type="Script" uid="uid://bb8b6erev0dpi" path="res://Items/Inventory.cs" id="13_3aypt"]
 [ext_resource type="Texture2D" uid="uid://cxj2yuou3y1gx" path="res://Assets/Characters/Hand.png" id="13_adufr"]
-[ext_resource type="Script" uid="uid://k5e3lc1vtsnn" path="res://Items/Toolbar.cs" id="14_bbhmo"]
+[ext_resource type="Script" uid="uid://dh5em13dks75w" path="res://Items/Item.cs" id="15_bbhmo"]
 [ext_resource type="Resource" uid="uid://don4ehhb440lh" path="res://Items/Tools/Resources/Axe.tres" id="16_80mi5"]
+
+[sub_resource type="Resource" id="Resource_bbhmo"]
+script = ExtResource("15_bbhmo")
+ItemResource = ExtResource("3_bbhmo")
+metadata/_custom_type_script = "uid://dh5em13dks75w"
+
+[sub_resource type="Resource" id="Resource_80mi5"]
+script = ExtResource("15_bbhmo")
+ItemResource = ExtResource("16_80mi5")
+metadata/_custom_type_script = "uid://dh5em13dks75w"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2xgwu"]
 animations = [{
@@ -348,6 +359,7 @@ radius = 9.0
 z_index = 10
 collision_layer = 16
 script = ExtResource("1_wln4q")
+StarterItems = Array[Object]([SubResource("Resource_bbhmo"), SubResource("Resource_80mi5")])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2xgwu")
@@ -399,9 +411,8 @@ texture = ExtResource("13_adufr")
 
 [node name="ItemPlaceholder" type="Node2D" parent="Arms/LeftArm"]
 
-[node name="Toolbar" type="Node" parent="."]
-script = ExtResource("14_bbhmo")
-Items = Array[Object]([ExtResource("3_bbhmo"), ExtResource("16_80mi5"), null, null, null, null, null, null, null])
+[node name="Inventory" type="Node" parent="."]
+script = ExtResource("13_3aypt")
 
 [node name="PickupRange" type="Area2D" parent="."]
 collision_layer = 16

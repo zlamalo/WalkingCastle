@@ -1,11 +1,13 @@
-[gd_scene load_steps=9 format=4 uid="uid://coqpmwsidddvs"]
+[gd_scene load_steps=14 format=4 uid="uid://coqpmwsidddvs"]
 
-[ext_resource type="Script" uid="uid://ccpbsn2phbex5" path="res://World/GameWorld.cs" id="1_rt6fa"]
+[ext_resource type="Script" uid="uid://bdhjaffdslxoh" path="res://World/PlayerUi.cs" id="1_mv4pa"]
 [ext_resource type="Texture2D" uid="uid://dw5girbnmy787" path="res://Assets/Tilesets/TileSet.png" id="2_c7dk1"]
 [ext_resource type="PackedScene" uid="uid://c2h5amesqewgq" path="res://Characters/Player/Blacksmith.tscn" id="2_uhmx5"]
 [ext_resource type="PackedScene" uid="uid://cpg21geqj3gsx" path="res://UserInterface/ToolbarUi.tscn" id="4_3k2l0"]
-[ext_resource type="PackedScene" uid="uid://basgog1rueobw" path="res://Items/ItemBase.tscn" id="5_xw5dl"]
-[ext_resource type="Resource" uid="uid://cs17p11wfatc6" path="res://Items/Materials/Resources/Wood.tres" id="6_i71ww"]
+[ext_resource type="PackedScene" uid="uid://basgog1rueobw" path="res://Items/ItemBase.tscn" id="5_i71ww"]
+[ext_resource type="Resource" uid="uid://cs17p11wfatc6" path="res://Items/Materials/Resources/Wood.tres" id="6_mv4pa"]
+[ext_resource type="Script" uid="uid://dhp844wy33beu" path="res://Items/StackableItem.cs" id="6_xxkyy"]
+[ext_resource type="Resource" uid="uid://41d3ph3laga5" path="res://Items/Materials/Resources/Rock.tres" id="8_mv4pa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3k2l0"]
 texture = ExtResource("2_c7dk1")
@@ -231,12 +233,30 @@ terrain_set_0/terrain_2/name = "WoodenBridge"
 terrain_set_0/terrain_2/color = Color(0.5375208, 0.3610845, 0.18820894, 1)
 sources/0 = SubResource("TileSetAtlasSource_3k2l0")
 
+[sub_resource type="Resource" id="Resource_xxkyy"]
+script = ExtResource("6_xxkyy")
+ItemResource = ExtResource("6_mv4pa")
+metadata/_custom_type_script = "uid://dhp844wy33beu"
+
+[sub_resource type="Resource" id="Resource_fvv12"]
+script = ExtResource("6_xxkyy")
+Quantity = 2
+ItemResource = ExtResource("6_mv4pa")
+metadata/_custom_type_script = "uid://dhp844wy33beu"
+
+[sub_resource type="Resource" id="Resource_mv4pa"]
+script = ExtResource("6_xxkyy")
+Quantity = 2
+ItemResource = ExtResource("8_mv4pa")
+metadata/_custom_type_script = "uid://dhp844wy33beu"
+
 [node name="GameWorld" type="Node2D"]
-script = ExtResource("1_rt6fa")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="PlayerUi" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("1_mv4pa")
 
-[node name="UserInterface" type="Control" parent="CanvasLayer"]
+[node name="UserInterface" type="Control" parent="PlayerUi"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -246,7 +266,7 @@ grow_vertical = 2
 size_flags_horizontal = 0
 mouse_filter = 1
 
-[node name="Toolbar" parent="CanvasLayer/UserInterface" instance=ExtResource("4_3k2l0")]
+[node name="Toolbar" parent="PlayerUi/UserInterface" instance=ExtResource("4_3k2l0")]
 layout_mode = 1
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -257,10 +277,14 @@ tile_set = SubResource("TileSet_xw5dl")
 
 [node name="Camera2D" type="Camera2D" parent="Blacksmith"]
 
-[node name="ItemBase" parent="." instance=ExtResource("5_xw5dl")]
-position = Vector2(31, -32)
-Item = ExtResource("6_i71ww")
+[node name="ItemBase" parent="." instance=ExtResource("5_i71ww")]
+position = Vector2(33, -41)
+Item = SubResource("Resource_xxkyy")
 
-[node name="ItemBase2" parent="." instance=ExtResource("5_xw5dl")]
-position = Vector2(12, -36)
-Item = ExtResource("6_i71ww")
+[node name="ItemBase2" parent="." instance=ExtResource("5_i71ww")]
+position = Vector2(-31, -53)
+Item = SubResource("Resource_fvv12")
+
+[node name="ItemBase3" parent="." instance=ExtResource("5_i71ww")]
+position = Vector2(-12, -48)
+Item = SubResource("Resource_mv4pa")

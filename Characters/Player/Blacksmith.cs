@@ -12,7 +12,10 @@ public partial class Blacksmith : CharacterBody2D
 	private Area2D pickupRange;
 	private bool lookingRight = true;
 
-	public Toolbar Toolbar { get; private set; }
+	[Export]
+	public Array<Item> StarterItems { get; set; }
+
+	public Inventory Inventory { get; private set; }
 	public const float Speed = 150.0f;
 
 	public override void _Ready()
@@ -25,9 +28,13 @@ public partial class Blacksmith : CharacterBody2D
 		leftArm = arms.GetNode<Node2D>("LeftArm");
 		pickupRange = GetNode<Area2D>("PickupRange");
 
-		Toolbar = GetNode<Toolbar>("Toolbar");
-		Toolbar.ToolbarSelectedItemChanged += OnToolbarSelectedItemChanged;
-		OnToolbarSelectedItemChanged(Toolbar.selectedItemIndex);
+		Inventory = GetNode<Inventory>("Inventory");
+		foreach (var item in StarterItems)
+		{
+			Inventory.AddItem(item);
+		}
+		Inventory.ToolbarSelectedItemChanged += OnToolbarSelectedItemChanged;
+		OnToolbarSelectedItemChanged(Inventory.selectedItemIndex);
 
 		GlobalNodes.Instance.SetPlayer(this);
 	}
@@ -37,14 +44,12 @@ public partial class Blacksmith : CharacterBody2D
 		base._Input(@event);
 		if (Input.IsActionPressed("Interact"))
 		{
-			GD.Print(pickupRange.GetOverlappingAreas().Count);
 			foreach (var area in pickupRange.GetOverlappingAreas())
 			{
-				if (area is ItemBase item)
+				if (area is ItemBase itemBase)
 				{
-					GD.Print($"Toolbar before adding item: {Toolbar.Items}");
-					Toolbar.AddItem(item.Item);
-					item.QueueFree();
+					Inventory.AddItem(itemBase.Item);
+					itemBase.QueueFree();
 				}
 			}
 			pickupRange.GetOverlappingAreas();
@@ -122,15 +127,15 @@ public partial class Blacksmith : CharacterBody2D
 		hitboxCollisionShape.Position = Vector2.Zero;
 		hitboxCollisionShape.Shape = new CircleShape2D { Radius = 0.8f };
 
-		var item = Toolbar.Items[selectedIndex];
-		if (item == null || item.ItemScene == null || item is not Tool)
+		var item = Inventory.Items[selectedIndex];
+		if (item == null || item.ItemResource?.ItemScene == null || item.ItemResource is not Tool)
 			return;
-		var itemInstance = Toolbar.Items[selectedIndex]?.ItemScene.Instantiate();
+		var itemInstance = Inventory.Items[selectedIndex]?.ItemResource?.ItemScene.Instantiate();
 		if (itemInstance != null)
 		{
 			itemPlaceholder.AddChild(itemInstance);
 
-			if (Toolbar.Items[selectedIndex] is Tool tool)
+			if (Inventory.Items[selectedIndex]?.ItemResource is Tool tool)
 			{
 				var newCollisionShape = itemInstance.GetNode<CollisionShape2D>("Area2D/CollisionShape2D");
 				hitboxCollisionShape.Position = newCollisionShape.Position;

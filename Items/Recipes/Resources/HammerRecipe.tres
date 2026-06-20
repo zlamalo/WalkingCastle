@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=10 format=3 uid="uid://cpv2opb7vpg7l"]
+
+[ext_resource type="Script" uid="uid://dhp844wy33beu" path="res://Items/StackableItem.cs" id="1_c8y0g"]
+[ext_resource type="Script" uid="uid://haerxip2nfla" path="res://Items/Recipes/Recipe.cs" id="1_enll1"]
+[ext_resource type="Resource" uid="uid://bpei5avknfi34" path="res://Items/Tools/Resources/Hammer.tres" id="1_txo3t"]
+[ext_resource type="Resource" uid="uid://cs17p11wfatc6" path="res://Items/Materials/Resources/Wood.tres" id="1_xqv11"]
+[ext_resource type="Script" uid="uid://dh5em13dks75w" path="res://Items/Item.cs" id="2_c8y0g"]
+[ext_resource type="Resource" uid="uid://41d3ph3laga5" path="res://Items/Materials/Resources/Rock.tres" id="3_8p7by"]
+
+[sub_resource type="Resource" id="Resource_1kywh"]
+script = ExtResource("1_c8y0g")
+Quantity = 2
+ItemResource = ExtResource("3_8p7by")
+metadata/_custom_type_script = "uid://dhp844wy33beu"
+
+[sub_resource type="Resource" id="Resource_xqv11"]
+script = ExtResource("1_c8y0g")
+Quantity = 3
+ItemResource = ExtResource("1_xqv11")
+metadata/_custom_type_script = "uid://dhp844wy33beu"
+
+[sub_resource type="Resource" id="Resource_g4sfc"]
+script = ExtResource("2_c8y0g")
+ItemResource = ExtResource("1_txo3t")
+metadata/_custom_type_script = "uid://dh5em13dks75w"
+
+[resource]
+script = ExtResource("1_enll1")
+Result = SubResource("Resource_g4sfc")
+Ingredients = Array[Object]([SubResource("Resource_1kywh"), SubResource("Resource_xqv11")])
+metadata/_custom_type_script = "uid://haerxip2nfla"
