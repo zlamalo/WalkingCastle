@@ -5,14 +5,15 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_1vxxh"]
 radius = 3.1619112
 
-[node name="Axe" type="Node2D"]
+[node name="Axe" type="Area2D"]
+collision_layer = 0
+collision_mask = 0
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1.1650047, -3.5351856)
-shape = SubResource("CircleShape2D_1vxxh")
-
-[node name="Axe" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_1vxxh")
 offset = Vector2(0.5, -2)
+
+[node name="ItemCollisionArea" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1, -4)
+shape = SubResource("CircleShape2D_1vxxh")

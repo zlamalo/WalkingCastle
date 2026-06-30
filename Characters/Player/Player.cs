@@ -119,11 +119,13 @@ public partial class Player : CharacterBody2D
 		}
 	}
 
+	// Freeky ahh code needs refactor
 	private void OnToolbarSelectedItemChanged(int selectedIndex)
 	{
 		var itemPlaceholder = rightArm.GetNode<Node2D>("ItemPlaceholder");
 		itemPlaceholder.GetChildOrNull<Node2D>(0)?.QueueFree();
 		// reset hitbox to default (fist)
+		var toolHitbox = rightArm.GetNode<ItemArea>("Hitbox");
 		var hitboxCollisionShape = rightArm.GetNode<CollisionShape2D>("Hitbox/CollisionShape2D");
 		hitboxCollisionShape.Position = Vector2.Zero;
 		hitboxCollisionShape.Shape = new CircleShape2D { Radius = 0.8f };
@@ -134,11 +136,13 @@ public partial class Player : CharacterBody2D
 		var itemInstance = Inventory.Items[selectedIndex]?.ItemResource?.ItemScene.Instantiate();
 		if (itemInstance != null)
 		{
+			toolHitbox.Item = item;
+
 			itemPlaceholder.AddChild(itemInstance);
 
 			if (Inventory.Items[selectedIndex]?.ItemResource is Tool tool)
 			{
-				var newCollisionShape = itemInstance.GetNode<CollisionShape2D>("Area2D/CollisionShape2D");
+				var newCollisionShape = itemInstance.GetNode<CollisionShape2D>("%ItemCollisionArea");
 				hitboxCollisionShape.Position = newCollisionShape.Position;
 				hitboxCollisionShape.Shape = newCollisionShape.Shape;
 			}

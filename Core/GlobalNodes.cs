@@ -15,6 +15,7 @@ public partial class GlobalNodes : Node
     [Signal]
     public delegate void PlayerReadyEventHandler(Player newPlayer);
 
+    public GameWorld GameWorld { get; set; }
     public Player Player { get; set; }
     public InformationLogUi InformationLogUi { get; set; }
 
@@ -22,6 +23,5 @@ public partial class GlobalNodes : Node
     {
         Player = player;
         EmitSignal(SignalName.PlayerReady, player);
-        GD.Print("Setting player in GlobalNodes.");
     }
 }

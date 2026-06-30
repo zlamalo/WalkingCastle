@@ -14,6 +14,8 @@ public class GlobalServices
     public RecipeService RecipeService = new();
     public ResourceLoaderService ResourceLoaderService = new();
     public InformationLogService InformationLogService = new();
+    public RNGService RNGService = new();
+    public ItemService ItemService = new();
 
     public GameSettings GameSettings = new();
 }

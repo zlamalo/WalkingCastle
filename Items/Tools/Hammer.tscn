@@ -9,7 +9,8 @@ radius = 3.3893301
 
 [node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="ItemCollisionArea" type="CollisionShape2D" parent="Area2D"]
+unique_name_in_owner = true
 position = Vector2(-0.026735306, -3.3685899)
 shape = SubResource("CircleShape2D_oqo43")
 

@@ -128,7 +128,9 @@ Item8={
 [layer_names]
 
 2d_physics/layer_1="World"
+2d_physics/layer_2="WorldHarvestables"
 2d_physics/layer_5="Player"
+2d_physics/layer_6="PlayerTools"
 2d_physics/layer_9="Items"
 
 [rendering]

@@ -1,7 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://basgog1rueobw"]
+[gd_scene load_steps=9 format=3 uid="uid://basgog1rueobw"]
 
 [ext_resource type="Script" uid="uid://weo86t5xpatv" path="res://Items/ItemBase.cs" id="1_yrqn7"]
+[ext_resource type="Script" uid="uid://et3mj0a0x35h" path="res://Items/Tools/Tool.cs" id="2_v51pe"]
 [ext_resource type="Shader" uid="uid://cc7m2t4lgsrb7" path="res://Items/PixelOutline.gdshader" id="3_3ei40"]
+[ext_resource type="Script" uid="uid://dh5em13dks75w" path="res://Items/Item.cs" id="3_sssfq"]
+
+[sub_resource type="Resource" id="Resource_7erut"]
+script = ExtResource("2_v51pe")
+metadata/_custom_type_script = "uid://et3mj0a0x35h"
+
+[sub_resource type="Resource" id="Resource_uf7eu"]
+script = ExtResource("3_sssfq")
+ItemResource = SubResource("Resource_7erut")
+metadata/_custom_type_script = "uid://dh5em13dks75w"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sssfq"]
 resource_local_to_scene = true
@@ -18,6 +29,7 @@ radius = 5.484781
 collision_layer = 256
 collision_mask = 16
 script = ExtResource("1_yrqn7")
+Item = SubResource("Resource_uf7eu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_sssfq")
@@ -25,7 +37,5 @@ material = SubResource("ShaderMaterial_sssfq")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_yrqn7")
 
-[connection signal="area_entered" from="." to="." method="OnAreaEntered"]
-[connection signal="area_exited" from="." to="." method="OnAreaExited"]
 [connection signal="mouse_entered" from="." to="." method="Highlight" binds= [true]]
 [connection signal="mouse_exited" from="." to="." method="Highlight" binds= [false]]
