@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://ykk8yps8kx35"]
+
+[ext_resource type="PackedScene" uid="uid://ckrc47ctod0kc" path="res://Items/Tools/ToolBase.tscn" id="1_sjo4c"]
+
+[node name="AxeBase" instance=ExtResource("1_sjo4c")]
+
+[node name="ToolHitbox" parent="." index="1"]
+monitorable = true
+
+[node name="CollisionShape2D" parent="ToolHitbox" index="0"]
+position = Vector2(1, -2)
+disabled = true

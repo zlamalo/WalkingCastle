@@ -103,6 +103,7 @@ _data = {
 }
 
 [node name="TreeBase" type="StaticBody2D"]
+collision_layer = 2
 collision_mask = 32
 script = ExtResource("1_unx3v")
 HarvestableResource = SubResource("Resource_xcfbo")

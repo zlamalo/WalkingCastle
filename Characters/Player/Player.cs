@@ -11,7 +11,25 @@ public partial class Player : CharacterBody2D
 	private Node2D rightArm;
 	private Node2D leftArm;
 	private Area2D pickupRange;
+	private Node2D itemPlaceholder;
 	private bool lookingRight = true;
+	private ToolBase heldTool;
+
+	private bool heldItemHitboxEnabled;
+	[Export]
+	public bool HeldItemHitboxEnabled
+	{
+		get
+		{
+			return heldItemHitboxEnabled;
+		}
+		set
+		{
+			heldItemHitboxEnabled = value;
+			heldTool?.ToggleHitbox(heldItemHitboxEnabled);
+		}
+	}
+
 
 	[Export]
 	private Array<Item> starterItems = [];
@@ -28,6 +46,7 @@ public partial class Player : CharacterBody2D
 		rightArm = arms.GetNode<Node2D>("RightArm");
 		leftArm = arms.GetNode<Node2D>("LeftArm");
 		pickupRange = GetNode<Area2D>("AttractRange");
+		itemPlaceholder = rightArm.GetNode<Node2D>("ItemPlaceholder");
 
 		Inventory = GetNode<Inventory>("Inventory");
 		foreach (var item in starterItems)
@@ -119,32 +138,19 @@ public partial class Player : CharacterBody2D
 		}
 	}
 
-	// Freeky ahh code needs refactor
 	private void OnToolbarSelectedItemChanged(int selectedIndex)
 	{
-		var itemPlaceholder = rightArm.GetNode<Node2D>("ItemPlaceholder");
 		itemPlaceholder.GetChildOrNull<Node2D>(0)?.QueueFree();
-		// reset hitbox to default (fist)
-		var toolHitbox = rightArm.GetNode<ItemArea>("Hitbox");
-		var hitboxCollisionShape = rightArm.GetNode<CollisionShape2D>("Hitbox/CollisionShape2D");
-		hitboxCollisionShape.Position = Vector2.Zero;
-		hitboxCollisionShape.Shape = new CircleShape2D { Radius = 0.8f };
+		heldTool = null;
 
 		var item = Inventory.Items[selectedIndex];
-		if (item == null || item.ItemResource?.ItemScene == null || item.ItemResource is not Tool)
-			return;
-		var itemInstance = Inventory.Items[selectedIndex]?.ItemResource?.ItemScene.Instantiate();
-		if (itemInstance != null)
+		if (item?.ItemResource is Tool toolItem)
 		{
-			toolHitbox.Item = item;
-
-			itemPlaceholder.AddChild(itemInstance);
-
-			if (Inventory.Items[selectedIndex]?.ItemResource is Tool tool)
+			var itemInstance = toolItem.GetInstance();
+			if (itemInstance != null)
 			{
-				var newCollisionShape = itemInstance.GetNode<CollisionShape2D>("%ItemCollisionArea");
-				hitboxCollisionShape.Position = newCollisionShape.Position;
-				hitboxCollisionShape.Shape = newCollisionShape.Shape;
+				heldTool = itemInstance;
+				itemPlaceholder.AddChild(itemInstance);
 			}
 		}
 	}

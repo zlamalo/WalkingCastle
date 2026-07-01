@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckrc47ctod0kc"]
+
+[ext_resource type="Script" uid="uid://chbhpvhst3mvp" path="res://Items/Tools/ToolBase.cs" id="1_o0tm3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nocvb"]
+radius = 3.0
+
+[node name="ToolBase" type="Node2D"]
+script = ExtResource("1_o0tm3")
+
+[node name="ToolSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+
+[node name="ToolHitbox" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 32
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ToolHitbox"]
+shape = SubResource("CircleShape2D_nocvb")

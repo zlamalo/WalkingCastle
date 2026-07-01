@@ -22,14 +22,11 @@ public partial class TreeBase : StaticBody2D
 
 	public void OnAreaEntered(Area2D area)
 	{
-		if (area is ItemArea item)
+		if (area.GetParent() is ToolBase toolBase)
 		{
-			if (item.Item.ItemResource is Tool tool)
+			if (toolBase.Tool.Type == HarvestableResource.HarvestableBy)
 			{
-				if (tool.Type == HarvestableResource.HarvestableBy)
-				{
-					OnHit();
-				}
+				OnHit();
 			}
 		}
 	}
