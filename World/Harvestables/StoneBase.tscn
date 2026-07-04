@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://04275qokgwnl"]
+
+[ext_resource type="PackedScene" uid="uid://c4qw7sm2oleu8" path="res://World/Harvestables/HarvestableBase.tscn" id="1_k253p"]
+[ext_resource type="Texture2D" uid="uid://ch2we7q7ordkq" path="res://Assets/World/Harvestables/Stone.png" id="2_1l85j"]
+
+[sub_resource type="Gradient" id="Gradient_1l85j"]
+colors = PackedColorArray(0.24, 0.24, 0.24, 1, 0.45, 0.45, 0.45, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k253p"]
+radius = 4.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1l85j"]
+radius = 9.0
+
+[node name="StoneBase" instance=ExtResource("1_k253p")]
+
+[node name="HarvestableSprite" parent="." index="0"]
+texture = ExtResource("2_1l85j")
+
+[node name="HitParticles" parent="." index="1"]
+speed_scale = 2.0
+direction = Vector2(0, -1)
+gravity = Vector2(0, 20)
+color_initial_ramp = SubResource("Gradient_1l85j")
+
+[node name="HarvestableCollision" parent="." index="2"]
+position = Vector2(0, 7)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_k253p")
+
+[node name="CollisionShape2D" parent="HarvestableHitboxArea" index="0"]
+position = Vector2(0, 2)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_1l85j")
+
+[node name="CollisionShape2D" parent="VisibilityArea" index="0"]
+position = Vector2(0, 1)
+rotation = -1.5707964

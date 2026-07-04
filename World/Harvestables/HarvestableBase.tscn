@@ -1,0 +1,120 @@
+[gd_scene load_steps=8 format=3 uid="uid://c4qw7sm2oleu8"]
+
+[ext_resource type="Script" uid="uid://dmvb6g7mtedpv" path="res://World/Harvestables/HarvestableBase.cs" id="1_8suya"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5b5fu"]
+radius = 7.0
+height = 14.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fjyqw"]
+radius = 6.0
+height = 12.0
+
+[sub_resource type="Animation" id="Animation_xcfbo"]
+resource_name = "OnHit"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HarvestableSprite:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.2, 0.26666668, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(1, 0), Vector2(-1, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitParticles:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.065383136),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_uu76m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HarvestableSprite:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitParticles:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uu76m"]
+_data = {
+&"OnHit": SubResource("Animation_xcfbo"),
+&"RESET": SubResource("Animation_uu76m")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8suya"]
+
+[node name="HarvestableBase" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 16
+script = ExtResource("1_8suya")
+
+[node name="HarvestableSprite" type="Sprite2D" parent="."]
+
+[node name="HitParticles" type="CPUParticles2D" parent="."]
+amount = 16
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 0.5
+emission_shape = 2
+emission_sphere_radius = 9.57
+direction = Vector2(0, 1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 15.0
+
+[node name="HarvestableCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_5b5fu")
+
+[node name="HarvestableHitboxArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 2
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HarvestableHitboxArea"]
+shape = SubResource("CapsuleShape2D_fjyqw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_uu76m")
+}
+
+[node name="VisibilityArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisibilityArea"]
+shape = SubResource("CapsuleShape2D_8suya")
+
+[connection signal="area_entered" from="HarvestableHitboxArea" to="." method="OnAreaEntered"]
+[connection signal="body_entered" from="VisibilityArea" to="." method="OnBodyEntered"]
+[connection signal="body_exited" from="VisibilityArea" to="." method="OnBodyExited"]

@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Harvestable" load_steps=10 format=3 uid="uid://cx2hoxdtrb24c"]
+
+[ext_resource type="Script" uid="uid://cyeid8pof4pjq" path="res://Items/Loot.cs" id="1_pmabi"]
+[ext_resource type="Texture2D" uid="uid://ch2we7q7ordkq" path="res://Assets/World/Harvestables/Stone.png" id="1_xs380"]
+[ext_resource type="Script" uid="uid://chrxmbjxafp0l" path="res://World/Harvestables/Harvestable.cs" id="2_37ggd"]
+[ext_resource type="Script" uid="uid://di0ffe06t2oka" path="res://Items/ValuesRange.cs" id="3_hy1ip"]
+[ext_resource type="Resource" uid="uid://41d3ph3laga5" path="res://Items/Materials/Resources/Rock.tres" id="4_ajkoa"]
+[ext_resource type="Script" uid="uid://dhp844wy33beu" path="res://Items/StackableItem.cs" id="5_h387g"]
+
+[sub_resource type="Resource" id="Resource_xs380"]
+script = ExtResource("3_hy1ip")
+Min = 1
+Max = 5
+
+[sub_resource type="Resource" id="Resource_wxf2q"]
+script = ExtResource("5_h387g")
+ItemResource = ExtResource("4_ajkoa")
+metadata/_custom_type_script = "uid://dhp844wy33beu"
+
+[sub_resource type="Resource" id="Resource_2xpoo"]
+script = ExtResource("1_pmabi")
+Item = SubResource("Resource_wxf2q")
+AmountRange = SubResource("Resource_xs380")
+metadata/_custom_type_script = "uid://cyeid8pof4pjq"
+
+[resource]
+script = ExtResource("2_37ggd")
+HarvestableTexture = ExtResource("1_xs380")
+HarvestableBy = 3
+HitPoints = 4
+Loot = Array[ExtResource("1_pmabi")]([SubResource("Resource_2xpoo")])
+metadata/_custom_type_script = "uid://chrxmbjxafp0l"

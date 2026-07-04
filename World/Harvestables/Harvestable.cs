@@ -5,6 +5,9 @@ using Godot.Collections;
 public partial class Harvestable : Resource
 {
     [Export]
+    public Texture2D HarvestableTexture { get; set; }
+
+    [Export]
     public ToolType HarvestableBy { get; set; }
 
     /// <summary>

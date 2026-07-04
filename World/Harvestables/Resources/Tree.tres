@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Harvestable" load_steps=10 format=3 uid="uid://deru717v3yn53"]
+
+[ext_resource type="Texture2D" uid="uid://dgmrmgyd0vp6w" path="res://Assets/World/Harvestables/Tree.png" id="1_42nn0"]
+[ext_resource type="Script" uid="uid://cyeid8pof4pjq" path="res://Items/Loot.cs" id="2_56nvv"]
+[ext_resource type="Script" uid="uid://di0ffe06t2oka" path="res://Items/ValuesRange.cs" id="3_c44j3"]
+[ext_resource type="Resource" uid="uid://cs17p11wfatc6" path="res://Items/Materials/Resources/Wood.tres" id="4_wb2j8"]
+[ext_resource type="Script" uid="uid://dhp844wy33beu" path="res://Items/StackableItem.cs" id="5_7154j"]
+[ext_resource type="Script" uid="uid://chrxmbjxafp0l" path="res://World/Harvestables/Harvestable.cs" id="6_spl84"]
+
+[sub_resource type="Resource" id="Resource_56nvv"]
+script = ExtResource("3_c44j3")
+Min = 1
+Max = 5
+
+[sub_resource type="Resource" id="Resource_p2wqp"]
+script = ExtResource("5_7154j")
+ItemResource = ExtResource("4_wb2j8")
+metadata/_custom_type_script = "uid://dhp844wy33beu"
+
+[sub_resource type="Resource" id="Resource_42nn0"]
+script = ExtResource("2_56nvv")
+Item = SubResource("Resource_p2wqp")
+AmountRange = SubResource("Resource_56nvv")
+metadata/_custom_type_script = "uid://cyeid8pof4pjq"
+
+[resource]
+script = ExtResource("6_spl84")
+HarvestableTexture = ExtResource("1_42nn0")
+HarvestableBy = 2
+HitPoints = 4
+Loot = Array[ExtResource("2_56nvv")]([SubResource("Resource_42nn0")])
+metadata/_custom_type_script = "uid://chrxmbjxafp0l"

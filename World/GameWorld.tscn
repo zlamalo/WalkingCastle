@@ -1,15 +1,18 @@
-[gd_scene load_steps=16 format=4 uid="uid://coqpmwsidddvs"]
+[gd_scene load_steps=19 format=4 uid="uid://coqpmwsidddvs"]
 
 [ext_resource type="Script" uid="uid://bdhjaffdslxoh" path="res://World/PlayerUi.cs" id="1_mv4pa"]
 [ext_resource type="Script" uid="uid://ccpbsn2phbex5" path="res://World/GameWorld.cs" id="1_qv01j"]
 [ext_resource type="Texture2D" uid="uid://dw5girbnmy787" path="res://Assets/Tilesets/TileSet.png" id="2_c7dk1"]
 [ext_resource type="PackedScene" uid="uid://c2h5amesqewgq" path="res://Characters/Player/Player.tscn" id="2_uhmx5"]
 [ext_resource type="PackedScene" uid="uid://bhy3las8gvef6" path="res://UserInterface/PlayerUi/PlayerGeneralUi.tscn" id="3_fvv12"]
-[ext_resource type="PackedScene" uid="uid://71hjdve2a7hd" path="res://World/Harvestables/TreeBase.tscn" id="3_qv01j"]
 [ext_resource type="PackedScene" uid="uid://basgog1rueobw" path="res://Items/ItemBase.tscn" id="5_i71ww"]
 [ext_resource type="Resource" uid="uid://cs17p11wfatc6" path="res://Items/Materials/Resources/Wood.tres" id="6_mv4pa"]
 [ext_resource type="Script" uid="uid://dhp844wy33beu" path="res://Items/StackableItem.cs" id="6_xxkyy"]
 [ext_resource type="Resource" uid="uid://41d3ph3laga5" path="res://Items/Materials/Resources/Rock.tres" id="8_mv4pa"]
+[ext_resource type="PackedScene" uid="uid://ce0xqqxuxvurg" path="res://World/Harvestables/TreeBase.tscn" id="10_qv01j"]
+[ext_resource type="Resource" uid="uid://deru717v3yn53" path="res://World/Harvestables/Resources/Tree.tres" id="11_5bdyl"]
+[ext_resource type="PackedScene" uid="uid://04275qokgwnl" path="res://World/Harvestables/StoneBase.tscn" id="12_76prl"]
+[ext_resource type="Resource" uid="uid://cx2hoxdtrb24c" path="res://World/Harvestables/Resources/Stone.tres" id="13_cbeub"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3k2l0"]
 texture = ExtResource("2_c7dk1")
@@ -283,11 +286,22 @@ Item = SubResource("Resource_fvv12")
 position = Vector2(-12, -48)
 Item = SubResource("Resource_mv4pa")
 
-[node name="Tree" parent="." instance=ExtResource("3_qv01j")]
-position = Vector2(-169, -6)
+[node name="TreeBase" parent="." instance=ExtResource("10_qv01j")]
+position = Vector2(-166, -5)
+HarvestableResource = ExtResource("11_5bdyl")
 
-[node name="Tree2" parent="." instance=ExtResource("3_qv01j")]
-position = Vector2(-146, -21)
+[node name="TreeBase2" parent="." instance=ExtResource("10_qv01j")]
+position = Vector2(-145, -14)
+HarvestableResource = ExtResource("11_5bdyl")
 
-[node name="Tree3" parent="." instance=ExtResource("3_qv01j")]
-position = Vector2(-124, -13)
+[node name="TreeBase3" parent="." instance=ExtResource("10_qv01j")]
+position = Vector2(-123, -12)
+HarvestableResource = ExtResource("11_5bdyl")
+
+[node name="StoneBase" parent="." instance=ExtResource("12_76prl")]
+position = Vector2(150, -7)
+HarvestableResource = ExtResource("13_cbeub")
+
+[node name="StoneBase2" parent="." instance=ExtResource("12_76prl")]
+position = Vector2(171, 8)
+HarvestableResource = ExtResource("13_cbeub")

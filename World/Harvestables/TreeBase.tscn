@@ -1,144 +1,38 @@
-[gd_scene load_steps=18 format=3 uid="uid://71hjdve2a7hd"]
+[gd_scene load_steps=7 format=3 uid="uid://ce0xqqxuxvurg"]
 
-[ext_resource type="Texture2D" uid="uid://dgmrmgyd0vp6w" path="res://Assets/World/Gatherables/Tree.png" id="1_5a3ut"]
-[ext_resource type="Script" uid="uid://diudoasriubjd" path="res://World/Harvestables/TreeBase.cs" id="1_unx3v"]
-[ext_resource type="Script" uid="uid://cyeid8pof4pjq" path="res://Items/Loot.cs" id="2_uu76m"]
-[ext_resource type="Script" uid="uid://chrxmbjxafp0l" path="res://World/Harvestables/Harvestable.cs" id="2_wm7es"]
-[ext_resource type="Script" uid="uid://di0ffe06t2oka" path="res://Items/ValuesRange.cs" id="3_xyxls"]
-[ext_resource type="Resource" uid="uid://cs17p11wfatc6" path="res://Items/Materials/Resources/Wood.tres" id="4_xyxls"]
-[ext_resource type="Script" uid="uid://dhp844wy33beu" path="res://Items/StackableItem.cs" id="5_tph8k"]
+[ext_resource type="PackedScene" uid="uid://c4qw7sm2oleu8" path="res://World/Harvestables/HarvestableBase.tscn" id="1_26f0f"]
+[ext_resource type="Texture2D" uid="uid://dgmrmgyd0vp6w" path="res://Assets/World/Harvestables/Tree.png" id="2_unx3v"]
 
-[sub_resource type="Resource" id="Resource_tph8k"]
-script = ExtResource("3_xyxls")
-Min = 1
-Max = 5
-metadata/_custom_type_script = "uid://di0ffe06t2oka"
-
-[sub_resource type="Resource" id="Resource_p2wqp"]
-script = ExtResource("5_tph8k")
-ItemResource = ExtResource("4_xyxls")
-metadata/_custom_type_script = "uid://dhp844wy33beu"
-
-[sub_resource type="Resource" id="Resource_1s0iv"]
-script = ExtResource("2_uu76m")
-Item = SubResource("Resource_p2wqp")
-AmountRange = SubResource("Resource_tph8k")
-metadata/_custom_type_script = "uid://cyeid8pof4pjq"
-
-[sub_resource type="Resource" id="Resource_xcfbo"]
-script = ExtResource("2_wm7es")
-HarvestableBy = 2
-HitPoints = 4
-Loot = Array[ExtResource("2_uu76m")]([SubResource("Resource_1s0iv")])
-metadata/_custom_type_script = "uid://chrxmbjxafp0l"
-
-[sub_resource type="Gradient" id="Gradient_wm7es"]
+[sub_resource type="Gradient" id="Gradient_unx3v"]
 colors = PackedColorArray(0.10511999, 0.32, 0.06719999, 1, 0.23441665, 0.58, 0.20300001, 1)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_twgtk"]
-radius = 5.0
-height = 10.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_26f0f"]
+radius = 3.0
+height = 6.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_unx3v"]
+radius = 9.0
+height = 20.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wm7es"]
+height = 42.0
 
-[sub_resource type="Animation" id="Animation_xcfbo"]
-resource_name = "OnHit"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Tree:offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.2, 0.26666668, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(1, 0), Vector2(-1, 0), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("GPUParticles2D:emitting")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.065383136),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
+[node name="TreeBase" instance=ExtResource("1_26f0f")]
 
-[sub_resource type="Animation" id="Animation_uu76m"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Tree:offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("GPUParticles2D:emitting")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
+[node name="HarvestableSprite" parent="." index="0"]
+texture = ExtResource("2_unx3v")
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_uu76m"]
-_data = {
-&"OnHit": SubResource("Animation_xcfbo"),
-&"RESET": SubResource("Animation_uu76m")
-}
+[node name="HitParticles" parent="." index="1"]
+color_initial_ramp = SubResource("Gradient_unx3v")
 
-[node name="TreeBase" type="StaticBody2D"]
-collision_layer = 2
-collision_mask = 32
-script = ExtResource("1_unx3v")
-HarvestableResource = SubResource("Resource_xcfbo")
+[node name="HarvestableCollision" parent="." index="2"]
+position = Vector2(-1, 17)
+shape = SubResource("CapsuleShape2D_26f0f")
 
-[node name="Tree" type="Sprite2D" parent="."]
-texture = ExtResource("1_5a3ut")
+[node name="CollisionShape2D" parent="HarvestableHitboxArea" index="0"]
+position = Vector2(0, 11)
+shape = SubResource("CapsuleShape2D_unx3v")
 
-[node name="GPUParticles2D" type="CPUParticles2D" parent="."]
-amount = 16
-one_shot = true
-explosiveness = 1.0
-lifetime_randomness = 0.5
-emission_shape = 2
-emission_sphere_radius = 9.57
-direction = Vector2(0, 1)
-gravity = Vector2(0, 0)
-initial_velocity_min = 5.0
-initial_velocity_max = 15.0
-color_initial_ramp = SubResource("Gradient_wm7es")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 15)
-shape = SubResource("CapsuleShape2D_twgtk")
-
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 32
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 9)
+[node name="CollisionShape2D" parent="VisibilityArea" index="0"]
+position = Vector2(0, -4)
 shape = SubResource("CapsuleShape2D_wm7es")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_uu76m")
-}
-
-[connection signal="area_entered" from="Area2D" to="." method="OnAreaEntered"]

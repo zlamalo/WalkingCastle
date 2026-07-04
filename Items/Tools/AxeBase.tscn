@@ -4,9 +4,6 @@
 
 [node name="AxeBase" instance=ExtResource("1_sjo4c")]
 
-[node name="ToolHitbox" parent="." index="1"]
-monitorable = true
-
 [node name="CollisionShape2D" parent="ToolHitbox" index="0"]
 position = Vector2(1, -2)
 disabled = true

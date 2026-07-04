@@ -9,7 +9,7 @@ public partial class Loot : Resource
     public Item Item { get; set; }
 
     [Export]
-    public ValuesRange AmountRange { get; set; } = new(1, 1);
+    public ValuesRange AmountRange { get; set; } = new();
 
     [Export(PropertyHint.Range, "0,1")]
     public float DropChance { get; set; } = 1f;
