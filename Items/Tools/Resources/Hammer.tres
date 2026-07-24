@@ -1,12 +1,20 @@
-[gd_resource type="Resource" script_class="Tool" load_steps=4 format=3 uid="uid://bpei5avknfi34"]
+[gd_resource type="Resource" script_class="Tool" load_steps=6 format=3 uid="uid://bpei5avknfi34"]
 
 [ext_resource type="Script" uid="uid://et3mj0a0x35h" path="res://Items/Tools/Tool.cs" id="1_j80bp"]
+[ext_resource type="Script" uid="uid://di0ffe06t2oka" path="res://Items/ValuesRange.cs" id="1_kgnqj"]
 [ext_resource type="Texture2D" uid="uid://whijplercx7t" path="res://Assets/Tools/Hammer.png" id="1_vda10"]
 [ext_resource type="PackedScene" uid="uid://b6y2qrmrjhpb8" path="res://Items/Tools/HammerBase.tscn" id="2_ldy3v"]
+
+[sub_resource type="Resource" id="Resource_xq1qt"]
+script = ExtResource("1_kgnqj")
+Min = 1
+Max = 3
+metadata/_custom_type_script = "uid://di0ffe06t2oka"
 
 [resource]
 script = ExtResource("1_j80bp")
 Type = 3
+DamageRange = SubResource("Resource_xq1qt")
 Name = "StarterHammer"
 Icon = ExtResource("1_vda10")
 ItemScene = ExtResource("2_ldy3v")

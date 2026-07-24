@@ -1,9 +1,12 @@
 using Godot;
 using System;
+using System.Threading.Tasks;
 
 public partial class HarvestableBase : StaticBody2D
 {
 	private readonly ItemService itemService = GlobalServices.Instance.ItemService;
+	private readonly FloatingTextService floatingTextService = GlobalServices.Instance.FloatingTextService;
+
 	private Sprite2D harvestableSprite;
 	private Image harvestableImage;
 	private AnimationPlayer animationPlayer;
@@ -50,16 +53,21 @@ public partial class HarvestableBase : StaticBody2D
 		}
 	}
 
-
 	public void OnAreaEntered(Area2D area)
 	{
-		GD.Print($"Area entered: {area.Name}");
 		if (area.GetParent() is ToolBase toolBase)
 		{
-			if (toolBase.Tool.Type == HarvestableResource.HarvestableBy)
+			if (toolBase.Tool.Type != HarvestableResource.HarvestableBy)
 			{
-				OnHit();
+				floatingTextService.ShowText(GlobalPosition, "This tool cannot harvest this resource.", Colors.Gray);
+				return;
 			}
+			if (toolBase.Tool.ToolPower < HarvestableResource.RequiredToolPower)
+			{
+				floatingTextService.ShowText(GlobalPosition, "Too hard", Colors.Gray);
+				return;
+			}
+			OnHit();
 		}
 	}
 

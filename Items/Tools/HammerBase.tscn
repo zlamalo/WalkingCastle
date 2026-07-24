@@ -1,11 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://b6y2qrmrjhpb8"]
+[gd_scene load_steps=4 format=3 uid="uid://b6y2qrmrjhpb8"]
 
 [ext_resource type="PackedScene" uid="uid://ckrc47ctod0kc" path="res://Items/Tools/ToolBase.tscn" id="1_suito"]
+[ext_resource type="Texture2D" uid="uid://whijplercx7t" path="res://Assets/Tools/Hammer.png" id="2_suito"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_suito"]
+radius = 3.0
 
 [node name="HammerBase" instance=ExtResource("1_suito")]
 
 [node name="ToolSprite" parent="." index="0"]
+texture = ExtResource("2_suito")
 offset = Vector2(0.5, -1.5)
 
 [node name="CollisionShape2D" parent="ToolHitbox" index="0"]
 position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_suito")

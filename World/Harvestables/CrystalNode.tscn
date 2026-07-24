@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://c5w7wnxnxi3c5"]
+
+[ext_resource type="PackedScene" uid="uid://c4qw7sm2oleu8" path="res://World/Harvestables/HarvestableBase.tscn" id="1_bspq5"]
+[ext_resource type="Resource" uid="uid://72dl5linsx6s" path="res://World/Harvestables/Resources/CrystalNode.tres" id="2_5lhst"]
+[ext_resource type="Texture2D" uid="uid://b3iqhosl16me3" path="res://Assets/World/Harvestables/CrystalNode.png" id="3_6epah"]
+
+[sub_resource type="Gradient" id="Gradient_6epah"]
+colors = PackedColorArray(0.49601993, 0.2646, 0.63, 1, 0.68386656, 0.27600002, 0.92, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_odrak"]
+radius = 3.0
+height = 10.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6epah"]
+radius = 7.0
+height = 14.0
+
+[node name="CrystalNode" instance=ExtResource("1_bspq5")]
+HarvestableResource = ExtResource("2_5lhst")
+
+[node name="HarvestableSprite" parent="." index="0"]
+texture = ExtResource("3_6epah")
+
+[node name="HitParticles" parent="." index="1"]
+color_initial_ramp = SubResource("Gradient_6epah")
+
+[node name="HarvestableCollision" parent="." index="2"]
+position = Vector2(0, 11)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_odrak")
+
+[node name="CollisionShape2D" parent="HarvestableHitboxArea" index="0"]
+position = Vector2(0, 7)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_6epah")

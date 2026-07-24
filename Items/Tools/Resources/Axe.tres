@@ -1,12 +1,20 @@
-[gd_resource type="Resource" script_class="Tool" load_steps=4 format=3 uid="uid://don4ehhb440lh"]
+[gd_resource type="Resource" script_class="Tool" load_steps=6 format=3 uid="uid://don4ehhb440lh"]
 
 [ext_resource type="Script" uid="uid://et3mj0a0x35h" path="res://Items/Tools/Tool.cs" id="1_56o1q"]
+[ext_resource type="Script" uid="uid://di0ffe06t2oka" path="res://Items/ValuesRange.cs" id="1_l08t8"]
 [ext_resource type="Texture2D" uid="uid://do3wyqrrgkdjk" path="res://Assets/Tools/Axe.png" id="1_wuola"]
 [ext_resource type="PackedScene" uid="uid://ykk8yps8kx35" path="res://Items/Tools/AxeBase.tscn" id="2_hr6dp"]
+
+[sub_resource type="Resource" id="Resource_lx15w"]
+script = ExtResource("1_l08t8")
+Min = 1
+Max = 3
+metadata/_custom_type_script = "uid://di0ffe06t2oka"
 
 [resource]
 script = ExtResource("1_56o1q")
 Type = 2
+DamageRange = SubResource("Resource_lx15w")
 Name = "BasicAxe"
 Icon = ExtResource("1_wuola")
 ItemScene = ExtResource("2_hr6dp")

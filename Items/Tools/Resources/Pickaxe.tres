@@ -1,7 +1,21 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=2 format=3 uid="uid://duv1fajhgb3v"]
+[gd_resource type="Resource" script_class="Tool" load_steps=6 format=3 uid="uid://duv1fajhgb3v"]
 
-[ext_resource type="Script" uid="uid://ciq1dlhjp7rmi" path="res://Items/ItemResource.cs" id="1_4lays"]
+[ext_resource type="Script" uid="uid://et3mj0a0x35h" path="res://Items/Tools/Tool.cs" id="1_4lays"]
+[ext_resource type="Texture2D" uid="uid://c3uikh0lwu1w5" path="res://Assets/Tools/Pickaxe.png" id="1_52u7h"]
+[ext_resource type="Script" uid="uid://di0ffe06t2oka" path="res://Items/ValuesRange.cs" id="1_mshiu"]
+[ext_resource type="PackedScene" uid="uid://b21exa546gjxr" path="res://Items/Tools/PickaxeBase.tscn" id="2_glxvf"]
+
+[sub_resource type="Resource" id="Resource_3jdh5"]
+script = ExtResource("1_mshiu")
+Min = 1
+Max = 2
+metadata/_custom_type_script = "uid://di0ffe06t2oka"
 
 [resource]
 script = ExtResource("1_4lays")
-metadata/_custom_type_script = "uid://ciq1dlhjp7rmi"
+Type = 1
+DamageRange = SubResource("Resource_3jdh5")
+Name = "Pickaxe"
+Icon = ExtResource("1_52u7h")
+ItemScene = ExtResource("2_glxvf")
+metadata/_custom_type_script = "uid://et3mj0a0x35h"

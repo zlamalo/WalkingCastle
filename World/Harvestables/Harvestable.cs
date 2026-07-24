@@ -10,6 +10,9 @@ public partial class Harvestable : Resource
     [Export]
     public ToolType HarvestableBy { get; set; }
 
+    [Export]
+    public int RequiredToolPower { get; set; } = 1;
+
     /// <summary>
     /// Number of hits required to harvest node
     /// </summary>

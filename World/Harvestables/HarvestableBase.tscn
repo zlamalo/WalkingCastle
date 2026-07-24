@@ -3,11 +3,11 @@
 [ext_resource type="Script" uid="uid://dmvb6g7mtedpv" path="res://World/Harvestables/HarvestableBase.cs" id="1_8suya"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5b5fu"]
-radius = 7.0
-height = 14.0
+radius = 4.0
+height = 10.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fjyqw"]
-radius = 6.0
+radius = 5.0
 height = 12.0
 
 [sub_resource type="Animation" id="Animation_xcfbo"]
@@ -72,6 +72,7 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8suya"]
+height = 28.0
 
 [node name="HarvestableBase" type="StaticBody2D"]
 collision_layer = 2

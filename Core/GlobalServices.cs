@@ -16,6 +16,7 @@ public class GlobalServices
     public InformationLogService InformationLogService = new();
     public RNGService RNGService = new();
     public ItemService ItemService = new();
+    public FloatingTextService FloatingTextService = new();
 
     public GameSettings GameSettings = new();
 }

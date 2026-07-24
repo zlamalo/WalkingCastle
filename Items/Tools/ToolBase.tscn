@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://chbhpvhst3mvp" path="res://Items/Tools/ToolBase.cs" id="1_o0tm3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nocvb"]
-radius = 3.0
+radius = 4.9119287
 
 [node name="ToolBase" type="Node2D"]
 script = ExtResource("1_o0tm3")
@@ -17,5 +17,4 @@ collision_layer = 32
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ToolHitbox"]
-self_modulate = Color(1, 0, 0, 1)
 shape = SubResource("CircleShape2D_nocvb")

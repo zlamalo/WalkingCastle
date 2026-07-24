@@ -1,9 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://ykk8yps8kx35"]
+[gd_scene load_steps=4 format=3 uid="uid://ykk8yps8kx35"]
 
 [ext_resource type="PackedScene" uid="uid://ckrc47ctod0kc" path="res://Items/Tools/ToolBase.tscn" id="1_sjo4c"]
+[ext_resource type="Texture2D" uid="uid://do3wyqrrgkdjk" path="res://Assets/Tools/Axe.png" id="2_p7q7u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p7q7u"]
+radius = 3.0
 
 [node name="AxeBase" instance=ExtResource("1_sjo4c")]
 
+[node name="ToolSprite" parent="." index="0"]
+texture = ExtResource("2_p7q7u")
+offset = Vector2(0.5, -1)
+
 [node name="CollisionShape2D" parent="ToolHitbox" index="0"]
 position = Vector2(1, -2)
-disabled = true
+shape = SubResource("CircleShape2D_p7q7u")

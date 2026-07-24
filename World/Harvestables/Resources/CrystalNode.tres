@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Harvestable" load_steps=4 format=3 uid="uid://72dl5linsx6s"]
+
+[ext_resource type="Texture2D" uid="uid://b3iqhosl16me3" path="res://Assets/World/Harvestables/CrystalNode.png" id="1_20lt1"]
+[ext_resource type="Script" uid="uid://cyeid8pof4pjq" path="res://Items/Loot.cs" id="1_eojh1"]
+[ext_resource type="Script" uid="uid://chrxmbjxafp0l" path="res://World/Harvestables/Harvestable.cs" id="2_20lt1"]
+
+[resource]
+script = ExtResource("2_20lt1")
+HarvestableTexture = ExtResource("1_20lt1")
+HarvestableBy = 1
+RequiredToolPower = 2
+HitPoints = 4
+metadata/_custom_type_script = "uid://chrxmbjxafp0l"

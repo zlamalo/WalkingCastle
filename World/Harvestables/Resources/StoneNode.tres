@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Harvestable" load_steps=10 format=3 uid="uid://cx2hoxdtrb24c"]
+
+[ext_resource type="Texture2D" uid="uid://ch2we7q7ordkq" path="res://Assets/World/Harvestables/Stone.png" id="1_6rvdj"]
+[ext_resource type="Script" uid="uid://cyeid8pof4pjq" path="res://Items/Loot.cs" id="2_818ku"]
+[ext_resource type="Script" uid="uid://di0ffe06t2oka" path="res://Items/ValuesRange.cs" id="3_i34pu"]
+[ext_resource type="Resource" uid="uid://41d3ph3laga5" path="res://Items/Materials/Resources/Rock.tres" id="4_0juhp"]
+[ext_resource type="Script" uid="uid://dhp844wy33beu" path="res://Items/StackableItem.cs" id="5_68p72"]
+[ext_resource type="Script" uid="uid://chrxmbjxafp0l" path="res://World/Harvestables/Harvestable.cs" id="6_c431g"]
+
+[sub_resource type="Resource" id="Resource_xs380"]
+script = ExtResource("3_i34pu")
+Min = 1
+Max = 5
+
+[sub_resource type="Resource" id="Resource_wxf2q"]
+script = ExtResource("5_68p72")
+ItemResource = ExtResource("4_0juhp")
+metadata/_custom_type_script = "uid://dhp844wy33beu"
+
+[sub_resource type="Resource" id="Resource_2xpoo"]
+script = ExtResource("2_818ku")
+Item = SubResource("Resource_wxf2q")
+AmountRange = SubResource("Resource_xs380")
+metadata/_custom_type_script = "uid://cyeid8pof4pjq"
+
+[resource]
+script = ExtResource("6_c431g")
+HarvestableTexture = ExtResource("1_6rvdj")
+HarvestableBy = 1
+HitPoints = 4
+Loot = Array[ExtResource("2_818ku")]([SubResource("Resource_2xpoo")])
+metadata/_custom_type_script = "uid://chrxmbjxafp0l"
